@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../js/vue.js" ></script>
+		
+	</head>
+	<body>
+		
+		<div class="app">
+			<input type="text" v-model="inputVal" />
+			<button @click="handleBtnClick">提交</button>
+			<ul>
+				
+				<todo-item :content="item"
+						   :index="index"
+						   v-for="(item, index) in list"
+						   @delete="handleItemDelete">
+					
+				</todo-item>
+			</ul>
+		</div>
+		
+		
+		<script>
+			
+			//子组件
+			var TodoItem = {
+				props:['content','index'],// 接受父组件传来的值
+				template:'<li @click="handleItemClick">{{content}}</li>',
+				methods:{
+					handleItemClick:function(){
+						this.$emit("delete", this.index)
+						//子组件想父组件传值，子组件先用emit方法事件触发， index   父组件在监听事件@delete，实现子组件带出来的内容，实现子组件向父组件传值
+						
+						// item  实现父组件向子组件传值
+						
+					}
+				}
+				
+			}
+			
+			
+			//父组件
+			var app = new Vue({
+				el: '.app',
+				components:{
+					TodoItem:TodoItem
+				},
+				data: {
+					list:[],
+					inputVal:''
+				},
+				methods:{
+					handleBtnClick:function(){
+						this.list.push(this.inputVal);
+						this.inputVal = ''
+					},
+					handleItemDelete:function(index){
+						this.list.splice(index,1)
+					}
+				}
+				
+			});
+			
+			
+			
+		</script>
+		
+		
+	</body>
+</html>

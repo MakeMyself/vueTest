@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../js/vue.js" ></script>
+		
+	</head>
+	<body>
+		
+		<div id="root">
+			<div v-on:click="handeClick">{{message}}</div>
+			<item></item>
+		</div>
+		
+		
+		<script>
+			Vue.component('item',{
+				template:'<div>hello world2</div>'
+			})
+			
+			var vm = new Vue({
+				el:'#root', //实例的属性
+				data:{		//实例的属性
+					message:'hello world'
+				},
+				methods:{
+					handeClick:function(){
+						alert(vm.$data.message)
+					}
+				}
+			})
+			vm.$data.message//实例的属性
+			vm.$data.destroy()//实例的方法
+			
+		</script>
+		
+		
+	</body>
+</html>

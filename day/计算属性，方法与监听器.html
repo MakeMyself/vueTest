@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>模板语法</title>
+		<script type="text/javascript" src="../js/vue.js" ></script>
+		
+	</head>
+	<body>
+	<div class="app">
+		{{fullName}}
+		{{age}}
+	</div>
+	
+	<script>
+		var vm = new Vue({
+			el:".app",
+			data:{
+				firstName:"li",
+				lastName:"zhenfeng",
+				age:28
+			},
+			
+			// 计算属性  有缓存的机制，优先使用(性能较高)
+			computed:{
+				fullName:function(){
+					console.log("计算一次");
+					return this.firstName + " " + this.lastName
+				}
+			}
+			
+			//用方法  
+// 			methods:{
+// 				fullName: function(){
+// 					console.log("计算了一次")
+// 					return this.firstName + " " + this.lastName
+// 				}
+// 			},
+			
+
+			//侦听器  会有缓存机制 (和computed机制类似)
+// 			watch: {
+// 				firstName: function(){
+// 					console.log("计算了一次");
+// 					this.fullName = this.firstName + " " + this.lastName;
+// 				},
+// 				lastName: function(){
+// 					console.log("计算了一次");
+// 					this.fullName =  this.firstName + " " + this.lastName;
+// 				}
+// 			}
+			
+			
+		})
+	</script>
+		
+	</body>
+</html>

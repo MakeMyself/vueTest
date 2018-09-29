@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../js/vue.js" ></script>
+		
+	</head>
+	<body>
+		
+		<div class="app">
+			<ul>
+				
+				<li v-for="ss in sss">
+					{{ ss.text }}
+				</li>
+			</ul>
+		</div>
+		
+		
+		<script>
+			
+			var app = new Vue({
+				el: '.app',
+				data: {
+					sss:[
+						{text:'学习考试'},
+						{text:'学习科学'},
+						{text:'学习数学'},
+						{text:'学习用语'}
+					]
+				}
+				
+				
+			});
+			
+			
+			
+		</script>
+		
+		
+	</body>
+</html>

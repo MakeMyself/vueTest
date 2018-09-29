@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../js/vue.js" ></script>
+		
+	</head>
+	<body>
+		
+		<div class="app">
+			<p>
+				{{message}}
+			</p>
+			<button @click="nizhuanxiaoxi">逆转消息</button>
+		</div>
+		
+		
+		<script>
+			
+			var app = new Vue({
+				el: '.app',
+				data: {
+					message:'Hello Vue.js!'
+				},
+				methods:{
+					nizhuanxiaoxi:function(){
+						this.message = this.message.split('').reverse().join('');
+					}
+				}
+				
+			});
+			
+			
+			
+		</script>
+		
+		
+	</body>
+</html>

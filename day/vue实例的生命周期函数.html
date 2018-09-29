@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../js/vue.js" ></script>
+	</head>
+	<body>
+		<div id="app">
+			hello world
+		</div>
+		
+		<script>
+			//生命周期函数  8个   会在某个时间点自动执行的函数
+			var app = new Vue({
+				el:'#app',
+				data:{
+					test:'hello'
+				},
+				beforeCreate:function(){//初始化之后绑定的函数 （自动执行的函数）
+					console.log("beforeCreate");
+				},
+				created:function(){//初始化之后
+					console.log("created");
+				},
+				beforeMount:function(){//页面渲染之前
+					console.log("beforeMount");
+				},
+				mounted:function(){ //
+					console.log("mounted");
+				},
+				beforeDestroy:function(){
+					console.log("beforeDestroy");
+				},
+				destroyed:function(){
+					console.log("destroyed");
+				},
+				beforeUpdate:function(){
+					console.log("beforeUpdate");
+				},
+				updated:function(){
+					console.log("updated");
+				}
+				
+			})
+		</script>
+	</body>
+</html>

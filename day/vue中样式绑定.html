@@ -7,14 +7,20 @@
 		<script src="../js/vue.js"></script>
 	</head>
 	<body>
-		<div class="app">
-			
+		<div id="app" :class="{activeted: activeted}" @click="handeClick">
+			hello world
 		</div>
-		99999999
 		<script>
 			var vm = new Vue({
-				el:".app",
-				asd发顺丰的
+				el:"#app",
+				data:{
+					activeted:false
+				},
+				methods:{
+					handeClick:function(){
+						this.activeted = true
+					}
+				}
 			})
 		</script>
 	

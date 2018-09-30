@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>vue列表渲染</title>
+		<script src="../js/vue.js"></script>
+	</head>
+	<body>
+		<div class="app">
+			<!-- 
+				template 可以用做包含对象，不渲染在dom上
+			 -->
+			<div v-for="(item,index) of list">
+				{{item.id}}-----{{item.name}}
+			</div>
+			
+		</div>
+		
+		
+		
+		<div class="app2" style="background: #f00; color: #fff;">
+			<div v-for="(item,key , index) of userInfo">
+				{{key}}------{{item}}
+			</div>
+		</div>
+		
+		<script>
+			//vue中 数组操作的7中方法
+			//push 向尾部追加
+			//pop  从尾部删除
+			//shift 数组删除第一个元素
+			//unshift 向数组头部第一项增加一个元素
+			//splice  截取
+			//sort  数组进行排序
+			//reverse  对数组进行取反
+			
+			
+			
+			
+			var vm = new Vue({
+				el:".app",
+				data:{
+					list:[
+						{
+							id:"1421566",
+							name:"li"
+						},
+						{
+							id:"6546",
+							name:"28"
+						},
+						{
+							id:"56489",
+							name:"nan"
+						}
+					]
+				}
+			})
+			
+			var vm2 = new Vue({
+				el:".app2",
+				data:{
+					userInfo:{
+						name:"lizhenfeng",
+						age:28,
+						sex:"nan"
+					}
+				}
+			})
+		</script>
+		
+	</body>
+</html>

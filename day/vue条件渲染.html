@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>vue中的调价渲染</title>
+		<script src="../js/vue.js"></script>
+	</head>
+	<body>
+		<div class="app">
+			<div v-if="show === 'a'">this is {{show}}</div>
+			<div v-else-if="show === 'b'">this is {{show}}</div>
+			<div v-else="">
+				this is {{show}}
+			</div>
+		</div>
+		
+		<div class="root">
+			<div v-if="show">
+				用户名<input type="text" key="userName" />
+			</div>
+			<div v-else="">
+				密码<input type="text" key="userPassword" />
+			</div>
+		</div>
+		
+		
+		<script>
+			var vm = new Vue({
+				el:".app",
+				data:{
+					show:"a"
+				}
+			})
+			
+			var vm2 = new Vue({
+				el:".root",
+				data:{
+					show:false
+				}
+			})
+		</script>
+	</body>
+</html>

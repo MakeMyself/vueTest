@@ -5,24 +5,61 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title></title>
 		<script src="../js/vue.js"></script>
+		<style>
+			.activeted{
+				color: #f00;
+			}
+			.activeted-one{
+				color: blue;
+			}
+		</style>
 	</head>
 	<body>
-		<div id="app" :class="{activeted: activeted}" @click="handeClick">
+		<div id="app" :class="[activeted,activetedOne]" @click="handeClick">
 			hello world
 		</div>
 		<script>
 			var vm = new Vue({
 				el:"#app",
 				data:{
-					activeted:false
+					activeted:"",
+					activetedOne:"activeted-one"
 				},
 				methods:{
 					handeClick:function(){
-						this.activeted = true
+						if(this.activeted = this.activeted === "activeted"){
+							this.activeted = "";
+						}else{
+							this.activeted = "activeted";
+						}
+						
 					}
 				}
 			})
 		</script>
+		
+		<div id="root" :style="[styleObj]" @click="kittyClick">
+			hello kitty
+		</div>
+		
+		<script>
+			var vm2 = new Vue({
+				el:"#root",
+				data:{
+					styleObj:{
+						color:"#f00",
+						fontSize:"30px"
+					}
+				},
+				methods:{
+					kittyClick:function(){
+						this.styleObj.color = "#2045e7";
+						this.styleObj.fontSize = "12px"
+					}
+				}
+			})
+		</script>
+		
 	
 	</body>
 </html>

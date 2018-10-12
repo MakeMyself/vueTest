@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+		<script src="../js/vue.js"></script>
+	</head>
+	<body>
+		<div class="app">
+			<div v-for="(item,key,index) of userInfo">
+			{{index}}---{{key}}---{{item}}
+			</div>
+		</div>
+		
+		<div class="app2">
+			<div v-for="item of userInfo">
+				{{item}}
+			</div>
+		</div>
+		
+		<script>
+			var vm = new Vue({
+				el:".app",
+				data:{
+					userInfo:{
+						name:"lizhen",
+						age:24,
+						title:"180cm"
+					}
+				}
+			})
+			
+			//改变数组页面上的数据跟着变化有三种方法
+			//1.改变对象的引用
+			//2.调动数组的变异方法(push.poup)
+			//3.vue的set方法
+			var vm2 = new Vue({
+				el:".app2",
+				data:{
+					userInfo:[1,2,3,4]
+				}
+			})
+		</script>
+	</body>
+</html>

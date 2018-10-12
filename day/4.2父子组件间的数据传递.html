@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+		<script src="../js/vue.js"></script>
+	</head>
+	<body>
+		<div class="app">
+			<numlist></numlist>
+			<numlist></numlist>
+		</div>
+		
+		<script>
+			Vue.component('numlist',{
+				props:['count'],
+				template:'<div>count</div>'
+			})
+			var vm = new Vue({
+				el:".app",
+				components:{
+					counter:counter
+				}
+			})
+		</script>
+		
+	</body>
+</html>

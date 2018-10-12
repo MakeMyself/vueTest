@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+		<script src="../js/vue.js"></script>
+	</head>
+	<body>
+		<div class="user_list">
+			<div ref="three"></div> <!-- ref放在div上，$refs.three 获取到的是当前的dom元素 -->
+			<user-info ref="one" @change="handleChange"></user-info> 
+			<!-- ref放在子组件上，$refs.one 获取到的是当前的子组件的引用 -->
+			<user-info ref="two" @change="handleChange"></user-info>
+			{{total}}
+		</div>
+		
+		<script>
+			Vue.component('user-info',{
+				data:function(){//自定义组件,data 必须是个函数 return 回来内容,并不是对象
+					return{
+						count:0
+					}
+				},
+				template:'<div class="name" @click="handleClick">number1:{{count}}</div>',
+				methods:{
+					handleClick:function(){
+						this.count++;
+						this.$emit('change')
+					}
+				}
+			})
+			
+			var vm =new Vue({
+				el:".user_list",
+				data:{
+					total:0
+				},
+				methods:{
+					handleChange:function(){
+						this.total = this.$refs.one.count + this.$refs.two.count
+					}
+					
+				}
+			})
+		</script>
+		
+	</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.js"></script>
+	</head>
+	<body>
+		
+		<div class="app">
+			
+			<child content="dell"></child>
+			<child content="lee"></child>
+			
+		</div>
+		
+		
+		<script>
+			//复杂组件间的传值
+			Vue.prototype.bus = new Vue();//new 一个vue的实例，挂载一个bus	
+			
+			Vue.component('child',{
+				props:{
+					content: String
+				},
+				data:function(){
+					return{
+						selfContent: this.content	
+					}
+				},
+				template:'<div @click="handleClick">{{selfContent}}</div>',
+				methods:{
+					handleClick:function(){
+						this.bus.$emit('change',this.selfContent)//如何触发事件
+					}
+				},
+				mounted:function(){
+					var this_ = this
+					this.bus.$on('change',function(msg){//如何监听事件
+						this_.selfContent = msg
+					})
+				}
+			})
+			
+			
+			var vm = new Vue({
+				el:'.app'
+			})
+		</script>
+		
+	</body>
+</html>

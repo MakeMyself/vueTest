@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../js/vue.js" ></script>
+	</head>
+	<body>
+		<div class="app">
+			<child>
+				<template slot-scope="props"> <!--插槽声明子组件接收的东西放在props，用-->
+					<div>
+						{{props.item}} -- cccc
+					</div>
+				</template>
+			</child>
+			
+		</div>
+		
+		<script>
+			
+			Vue.component('child',{
+				data:function(){
+					return {
+						list:[1,2,3,4]
+					}
+				},
+				template:`<div>
+							<slot 
+								v-for="item of list" 
+								:item=item
+							></slot>
+						</div>`
+			})
+			var vm = new Vue({
+				el:'.app'
+			})
+		</script>
+		
+	</body>
+</html>

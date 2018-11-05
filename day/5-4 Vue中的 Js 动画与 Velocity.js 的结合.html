@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.js"></script>
+		<script type="text/javascript" src="../js/velocity.min.js" ></script>
+	</head>
+	<body>
+		<div class="app">
+			<transition
+				@before-enter="handleBeforeEnter"
+				@enter="handleEnter"
+				@after-enter="handleAfterEnter"
+				
+				@before-leave="handleBeforeLeave"
+				@leave="handleLeave"
+				@after-leave="handleAfterLeave"
+			>
+				
+				<div v-show="show">hello world</div>
+			</transition>
+			<button @click="handleBtnClick">切换</button>
+		</div>
+		
+		
+		<script>
+			var vm = new Vue({
+				el:'.app',
+				data:{
+					show:true
+				},
+				methods:{
+					handleBtnClick:function(){
+						this.show=!this.show
+					},
+					handleBeforeEnter:function(el){
+						el.style.opacity=0;
+						console.log("进入之前的动画");
+					},
+					handleEnter:function(el,done){
+						Velocity(el,{
+							opacity:1
+						},{
+							duration:1000,
+							complete:done
+						})
+						console.log("进入的动画");
+						
+					},
+					handleAfterEnter:function(el){
+						el.style.color="green";
+						console.log("进入之后的动画");
+					},
+					handleBeforeLeave:function(el){
+						console.log("离开之前的动画");
+					},
+					handleLeave:function(el,done){
+						console.log("离开的动画");
+						setTimeout(function(){
+							done();
+						},1000)
+						
+					},
+					handleAfterLeave:function(el){
+						console.log("离开之后的动画");
+					}
+				}
+			})
+		</script>
+		
+	</body>
+</html>

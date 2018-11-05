@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../js/vue.js" ></script>
+	</head>
+	<body>
+		<style>
+			.v-enter,
+			.v-leave-to{
+				opacity: 0;
+			}
+			.v-enter-active,
+			.v-leave-active{
+				transition: opacity 1s;
+			}
+		</style>
+		<div class="app">
+			<transition mode="out-in">
+				<component :is="type"></component>
+			</transition>
+			
+			<button @click="handleBtnClick">切换</button>
+		</div>
+		
+		<script>
+			Vue.component('child',{
+				template:"<div>child</div>"
+			})
+			Vue.component('child-one',{
+				template:"<div>child-one</div>"
+			})
+			
+			
+			var vm = new Vue({
+				el:'.app',
+				data:{
+					show:true,
+					type:"child"
+				},
+				methods:{
+					handleBtnClick : function(){
+						this.type = this.type === 'child' ? 'child-one' : 'child'
+					}
+				}
+			})
+		</script>
+		
+	</body>
+</html>

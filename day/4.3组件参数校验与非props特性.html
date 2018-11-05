@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+		<script src="../js/vue.js"></script>
+	</head>
+	<body>
+		<div class="app">
+			<child content="hello"></child>
+		</div>
+		
+		<script>
+			
+			Vue.component('child',{
+				//props 特性   传  接  
+// 				props:{
+// 					content:{//父组件调用子组件的时候调用了content,子组件恰好在props里面声明了content,成为props 特性,1.属性的传递不会在dom上显示
+// 						type:String,//传入的类型
+// // 						required:false,//是否必填
+// // 						default:'default value'//默认值
+// 						validator: function(value){//自定义校验器
+// 							return (value.length > 5)
+// 						}
+// 					}
+// 				},
+				
+				//非props 特性，父组件通过属性向子组件传值，子组件没有props 里面声明content 来接收， 
+				//属性会展示在dom标签上
+				
+				template:'<div>hello</div>'
+			})
+			var vm = new Vue({
+				el:'.app'
+			})
+		</script>
+		
+	</body>
+</html>
